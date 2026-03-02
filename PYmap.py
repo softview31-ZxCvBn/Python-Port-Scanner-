@@ -1,7 +1,8 @@
 # Python-Port-Scanner
 import socket
 import subprocess
-color = {                                                     "red": "\033[31m",
+color = {
+"red": "\033[31m",
 "green": "\033[32m",
 "yellow": "\033[33m",
 "blue": "\033[34m",
@@ -9,14 +10,20 @@ color = {                                                     "red": "\033[31m",
 "cyan": "\033[36m",
 "white": "\033[37m",
 "bold": "\033[1m",
-"underline": "\033[4m",                                       "reset": "\033[0m"                                            }
-                                                              print(color['cyan'] + color['bold'])
-print("=" * 50)                                               print(f"{'PYmap':^50}")                                       print("=" * 50 + color['reset'])
+"underline": "\033[4m",
+"reset": "\033[0m"
+}
+print(color['cyan'] + color['bold'])
+print("=" * 50)
+print(f"{'PYmap':^50}")
+print("=" * 50 + color['reset'])
 print(color['bold'] + color['magenta'] + "made by Softview31" + color['reset'])
-print(color['bold'] + color['blue'])                          target = input("[*] Target: ")
+print(color['bold'] + color['blue'])
+target = input("[*] Target: ")
 get_ip = socket.gethostbyname(target)
 print(f"[*] Target's IP {get_ip}" + color['reset'])
-
+start_port = input("Enter the starting port(default:1): ")
+end_port = input("Enter the ending port(default: 1024): ")
 def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
