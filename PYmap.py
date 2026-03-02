@@ -25,7 +25,8 @@ print("[*] Target's IP " + color['red'], get_ip + color['reset'])
 print(color['blue'] + color['bold'])
 start_port = int(input("[*]Enter Starting port(default:1): "))
 end_port = int(input("[*] Enter Ending port(default: 1024): "))
-timeout = float(input("[*] Enter the amount of seconds to scan each ports: ") + color['reset'])
+timeout = float(input("[*] Enter the amount of seconds to scan each ports: "))
+print(color['reset'])
 def host_checker(target):
     response = subprocess.call(["ping", "-c", "1", target], stdout = subprocess.DEVNULL,
                stderr = subprocess.DEVNULL)
