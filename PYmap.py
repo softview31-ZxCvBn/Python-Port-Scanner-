@@ -62,7 +62,7 @@ service = {
     5900: "VNC",
     27017: "MongoDB"
 }
-
+theeads = []
 if result == True:
   print(color['green'] + color['bold'] +  "[*] Host is up, starting scan..." + color['reset'])
   print(color['yellow'] + "_" * 50)
