@@ -1,6 +1,7 @@
 # Python-Port-Scanner
 import socket
 import subprocess
+import theeading
 color = {
 "red": "\033[31m",
 "green": "\033[32m",
@@ -35,7 +36,7 @@ def host_checker(target):
     else:
          return False
 result = host_checker(target)
-
+open_ports = []
 def scan_port(target, port):
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(timeout)
@@ -68,8 +69,12 @@ if result == True:
   print(f"  {'PORT':>10} {'SERVICE':>20}")
   print("_" * 50)
   for port in range(start_port, end_port + 1):
-       mainfunc = scan_port(target, port)
-       if mainfunc == True:
+    t = threading.Thread(target=scan_port, args=(target, port))
+    threads.append(t)
+    t.start()
+    if len(threads) % 100 == 0:
+        for t in threads[-100:]:
+            t.join()
            print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
 else:
     print(color['red'] + "[-] Host is down, exiting scan" + color['reset'])
