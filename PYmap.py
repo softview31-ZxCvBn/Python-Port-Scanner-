@@ -1,7 +1,7 @@
 # Python-Port-Scanner
 import socket
 import subprocess
-import theeading
+import threading
 color = {
 "red": "\033[31m",
 "green": "\033[32m",
@@ -62,7 +62,7 @@ service = {
     5900: "VNC",
     27017: "MongoDB"
 }
-theeads = []
+threads = []
 if result == True:
   print(color['green'] + color['bold'] +  "[*] Host is up, starting scan..." + color['reset'])
   print(color['yellow'] + "_" * 50)
