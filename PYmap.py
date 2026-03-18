@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # Python-Port-Scanner
 import socket
 import subprocess
@@ -88,7 +89,7 @@ if result == True:
   print(color['green'] + color['bold'] +  "[*] Host is up, starting scan..." + color['reset'])
   print(color['yellow'] + "_" * 50)
   print(f"  {'PORT':>10} {'SERVICE':>20}")
-  print("_" * 50)
+  print("_" * 50 + color['reset'])
   for port in range(start_port, end_port + 1):
     t = threading.Thread(target=scan_port, args=(target, port))
     threads.append(t)
