@@ -89,7 +89,7 @@ if result == True:
   print(color['green'] + color['bold'] +  "[*] Host is up, starting scan..." + color['reset'])
   print(color['yellow'] + "_" * 50)
   print(f"  {'PORT':>10} {'SERVICE':>20}")
-  print("_" * 50 + color['reset'])
+  print("_" * 50)
   for port in range(start_port, end_port + 1):
     t = threading.Thread(target=scan_port, args=(target, port))
     threads.append(t)
@@ -103,3 +103,4 @@ if result == True:
       print(f"  {port:>9} {service.get(port, 'Unknown'):>19}")
 else:
     print(color['red'] + "[-] Host is down, exiting scan" + color['reset'])
+print(color['reset']
